@@ -71,7 +71,7 @@ class ProcessedFactoryFilter:
             case None:
                 return True
             case BoolMarker():
-                return None if not marker.value else True
+                return marker.value
             case NotMarker():
                 return self._eval_not_marker(marker, component)
             case OrMarker():

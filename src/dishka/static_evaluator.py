@@ -141,12 +141,7 @@ class StaticActivatorEvaluator:
         except NoContextValueError:
             return False
 
-        source = factory.source
-        if factory.is_to_bind and args:
-            result = source(args[0], *args[1:], **kwargs)
-        else:
-            result = source(*args, **kwargs)
-
+        result = factory.source(*args, **kwargs)
         return bool(result)
 
     def evaluate(self) -> dict[DependencyKey, bool]:
